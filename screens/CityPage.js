@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-function CityPage() {
+function CityPage({ route }) {
+  const { city } = route.params;
   return (
     <View>
-      <Text>City Page</Text>
+      <Text>Selected city: {city}</Text>
     </View>
   );
 }

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-
-const cities = ["Amsterdam", "Athens", "Paris", "Berlin"];
+import cities from "../data/cities.json";
 
 function MainPage({ navigation }) {
   const [city, setCity] = useState("Amsterdam");
+
+  const showWeather = () => {
+    navigation.navigate("CityPage", { city });
+  };
   return (
     <View>
       <Picker
@@ -16,6 +19,7 @@ function MainPage({ navigation }) {
           <Picker.Item key={index} label={city} value={city}></Picker.Item>
         ))}
       </Picker>
+      <Button title="Show Weather" onPress={showWeather} />
     </View>
   );
 }
