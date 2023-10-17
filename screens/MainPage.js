@@ -13,6 +13,7 @@ export default function MainPage({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.pickerContainer}>
+        {/* TODO: Modularize picker */}
         <Picker
           selectedValue={city}
           onValueChange={(itemValue) => setCity(itemValue)}
