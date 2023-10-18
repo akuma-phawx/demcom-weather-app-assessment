@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainPage from "./screens/MainPage";
@@ -11,13 +10,20 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="IndexPage" component={MainPage} />
-        <Stack.Screen name="CityPage" component={CityPage} />
+        <Stack.Screen name="Home" component={MainPage} />
+        <Stack.Screen
+          name="CityPage"
+          component={CityPage}
+          options={({ route }) => ({
+            title: route.params.city, // Set the title based on the city param
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
+// TODO: Use this styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
