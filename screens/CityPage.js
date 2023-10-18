@@ -12,7 +12,6 @@ export default function CityPage({ route }) {
   const [coordinates, setCoordinates] = useState({ lat: 0, lon: 0 });
 
   useEffect(() => {
-    // Fetch the city coordinates when the component mounts
     getCityCoordinates(city)
       .then((coord) => setCoordinates(coord))
       .catch((error) => console.error("Error fetching coordinates: ", error));
@@ -24,7 +23,11 @@ export default function CityPage({ route }) {
         Coordinates: Lat: {coordinates.lat}, Lon: {coordinates.lon}
       </Text>
       <Tab.Navigator>
-        <Tab.Screen name="Hourly Weather" component={HourlyWeatherScreen} />
+        <Tab.Screen
+          name="Hourly Weather"
+          component={HourlyWeatherScreen}
+          initialParams={{ city }}
+        />
         <Tab.Screen name="7 Day Forecast" component={SevenDayForecastScreen} />
       </Tab.Navigator>
     </Fragment>
